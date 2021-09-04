@@ -9,3 +9,4 @@ class Job(models.Model):
 
     #creating a summary field
     summary = models.CharField(max_length=200)
+    

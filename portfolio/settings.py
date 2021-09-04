@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'jobs',
 ]
 
 MIDDLEWARE = [
@@ -76,8 +77,12 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'portfoliodb', #name of our db
+        'USER': 'postgres',
+        'HOST': 'localhost',
+        'PASSWORD': 'mahips130',
+        'PORT': '5432',
     }
 }
 
@@ -125,4 +130,8 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Dir where the media files are stored
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# path where we can access media on URL
+MEDIA_URL = '/media/'
