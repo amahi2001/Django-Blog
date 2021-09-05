@@ -17,16 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-#need to import these in order to point to media url
+# need to import these in order to point to media url
 from django.conf import settings
 from django.conf.urls.static import static
-
-
+import jobs.views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #url that points use to the media files when we do /media/images/example.jpg on url
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
+    path('', jobs.views.home, name='home'),
 
-
+    # url that points use to the media files when we do /media/images/example.jpg on url
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
