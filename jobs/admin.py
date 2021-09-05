@@ -1,5 +1,7 @@
+
 from django.contrib import admin
 from .models import Job
 
-admin.site.register(Job)
 # Register your models here.
+
+admin.site.register(Job) #we are now able to interact with our models on the /admin site
