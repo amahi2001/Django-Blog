@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.87.0">
-    <title>Home Page</title>
+    <title>Blog</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/album/">
 
@@ -61,8 +61,8 @@
                 <!-- end toggle button-->
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav ml-auto">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        <a class="nav-link" href={%url 'allblogs'%}>Blog</a>
+                        <a class="nav-link" aria-current="page" href="{%url 'home'%}">Home</a>
+                        <a class="nav-link active" href="#">Blog</a>
                         <!--<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
                     </div>
                 </div>
@@ -71,44 +71,29 @@
     </header>
     <!--- End Header -->
 
-    <main>
-        <section class="py-5 text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">Hey I'm Abrar</h1>
-                    <p class="lead text-muted">I have always been fascinated by the intersection of math and technology,
-                        and look to apply what I learn in school to real-world situations. In my free time, you will
-                        find me working on some cool computer problems, volunteering, or learning new concepts in
-                        finance/cryptocurrency, and tech. My passion for STEM drives me to continually expand my
-                        knowledge and make a difference in the lives of others.
-                    </p>
-                    <p>
-                        <a href="mailto:amahi2001@gmail.com" class="btn btn-primary my-2">Email Me</a>
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <div class="album py-5 bg-light">
-            <div class="container">
-
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    {% for job in jobs.all %}
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <img class='card-image-top' src="{{job.image.url}}" alt="">
-                            <div class="card-body">
-                                <p class="card-text">{{job.summary}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
+    <!--Main-->
+    <main role='main'>
+        <div class="container">
+            <!--centered h1 and added 4-level padding from the top-->
+            <h1 class='text-center pt-4'>Welcome to my blog</h1>
+            <br />
+            <br />
+            <h2> Latest Post</h2>
+            {%for blog in blogs.all%}
+            <a href="">
+                <h3>{{blog.title}}</h3>
+            </a>
+            {{blog.pub_date_pretty}}
+            <br />
+            <img class="img-fluid" src="{{blog.image.url}}" height=200 width="200" />
+            <br/>
+            {{blog.summary}}
+            {%endfor%}
+            <hr />
         </div>
-
     </main>
-
+    <!--End Main-->
+    <!-- Footer -->
     <footer class="text-muted py-5">
         <div class="container text-center">
             <p class="float-end mb-1">
@@ -118,7 +103,7 @@
             <p class="mb-1">Copyright Abrar Mahi &copy; {% now "Y"%}</p>
         </div>
     </footer>
-
+    <!-- End Footer -->
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"

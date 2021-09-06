@@ -20,12 +20,14 @@ from django.urls import path
 # need to import these in order to point to media url
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls.conf import include
 import jobs.views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', jobs.views.home, name='home'),
+    path('blog/', include('blog.urls')),
 
     # url that points use to the media files when we do /media/images/example.jpg on url
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
