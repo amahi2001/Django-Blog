@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en">
-
+{%load static%}
 <head>
-    <meta charset="utf-8">
+    <!-- <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.87.0">
+    <meta name="generator" content="Hugo 0.87.0"> -->
     <title>Blog</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/album/">
@@ -51,7 +51,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Abrar Mahi</a>
+                <a class="navbar-brand" href={%url 'home'%}>Abrar Mahi</a>
                 <!-- toggle button-->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
@@ -61,8 +61,9 @@
                 <!-- end toggle button-->
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav ml-auto">
-                        <a class="nav-link" aria-current="page" href="{%url 'home'%}">Home</a>
+                        <a class="nav-link" aria-current="page" href={%url 'home' %}>Home</a>
                         <a class="nav-link active" href="#">Blog</a>
+                        <a class="nav-link" aria-current="page" href="{%static 'academic_resume.pdf'%}">Resume</a>
                         <!--<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
                     </div>
                 </div>
@@ -74,19 +75,20 @@
     <!--Main-->
     <main role='main'>
         <div class="container">
-            <!--centered h1 and added 4-level padding from the top-->
+
             <h1 class='text-center pt-4'>Welcome to my blog</h1>
+            <!--centered h1 and added 4-level padding from the top-->
             <br />
             <br />
             <h2> Latest Post</h2>
             {%for blog in blogs.all%}
-            <a href="">
+            <a href={%url 'detail' blog.id%}> <!--- link to the detail page, takes in the id as param -->
                 <h3>{{blog.title}}</h3>
             </a>
             {{blog.pub_date_pretty}}
             <br />
             <img class="img-fluid" src="{{blog.image.url}}" height=200 width="200" />
-            <br/>
+            <br />
             {{blog.summary}}
             {%endfor%}
             <hr />
